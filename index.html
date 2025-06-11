@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>480Y/277V Electrical Calculators</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>480Y/277V Electrical Calculators</h1>
+
+    <div style="float:left; width:50%;">
+        <div class="calculator">
+            <h2>Conversion Calculators</h2>
+            
+            <div class="tab">
+                <button class="tablinks active" onclick="openCalc(event, 'VAtoAmps')">VA to Amps</button>
+                <button class="tablinks" onclick="openCalc(event, 'AmpstoVA')">Amps to VA</button>
+            </div>
+
+            <div id="VAtoAmps" class="tabcontent" style="display:block;">
+                <h3>Convert Volt-Amperes (VA) to Amps</h3>
+                <form id="va-to-amps-form" onsubmit="return false;">
+                    <label for="va">Volt-Amperes (VA):</label>
+                    <input type="number" id="va" step="0.01" required>
+
+                    <label for="voltage2">System Voltage:</label>
+                    <select id="voltage2">
+                        <option value="277">277V Single-Phase</option>
+                        <option value="480-1ph">480V Single-Phase</option>
+                        <option value="480-3ph">480V Three-Phase</option>
+                    </select>
+
+                    <button type="button" onclick="calculateVAToAmps()">Calculate</button>
+                </form>
+                <p id="amps-result">Current (Amps): </p>
+                <p id="va-per-phase-result">Per Phase Volt-Amperes: </p>
+            </div>
+
+            <div id="AmpstoVA" class="tabcontent">
+                <h3>Convert Amps to Volt-Amperes (VA)</h3>
+                <form id="amps-to-va-form" onsubmit="return false;">
+                    <label for="amps">Current (Amps):</label>
+                    <input type="number" id="amps" step="0.01" required>
+
+                    <label for="voltage1">System Voltage:</label>
+                    <select id="voltage1">
+                        <option value="277">277V Single-Phase</option>
+                        <option value="480-1ph">480V Single-Phase</option>
+                        <option value="480-3ph">480V Three-Phase</option>
+                    </select>
+
+                    <button type="button" onclick="calculateAmpsToVA()">Calculate</button>
+                </form>
+                <p id="total-va-result">Total Volt-Amperes: </p>
+                <p id="per-phase-va-result">Per Phase Volt-Amperes: </p>
+            </div>
+        </div>
+    </div>
+
+    <div style="float:left; width:50%;">
+        <div class="calculator">
+            <h2>Circuit Breaker and Wire Size Calculator</h2>
+            <label for="vaInput">VA per phase:</label>
+            <input type="number" id="vaInput" placeholder="Enter VA" readonly>
+            
+            <button onclick="calculate()">Calculate</button>
+            
+            <div id="result" style="display:none;">
+                <h3>Result: Circuit Breakers are sized to 80% of capacity</h3>
+                <p id="breakerSize"></p>
+                <p id="wireSize"></p>
+                <p id="awgConfig"></p>
+                <button onclick="copyAWG()">Copy AWG Configuration</button>
+            </div>
+        </div>
+    </div>
+    
+  <script src="vaRanges.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

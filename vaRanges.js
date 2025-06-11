@@ -1,0 +1,33 @@
+const vaRanges = [
+  [
+    { "min": 1, "max": 3324, "maxFLA": 12, "breaker": "15A", "wire": "#12 to #10", "awg": "(4)#12, (1)#12G, 1/2\" C" },
+    { "min": 3325, "max": 4432, "maxFLA": 16, "breaker": "20A", "wire": "#12 to #8", "awg": "(4)#12, (1)#12G, 1/2\" C" },
+    { "min": 4433, "max": 5540, "maxFLA": 20, "breaker": "25A", "wire": "#10 to #8", "awg": "(4)#10, (1)#10G, 1/2\" C" },
+    { "min": 5541, "max": 6648, "maxFLA": 24, "breaker": "30A", "wire": "#10 to #8", "awg": "(4)#10, (1)#10G, 1/2\" C" },
+    { "min": 6649, "max": 7756, "maxFLA": 28, "breaker": "35A", "wire": "#8", "awg": "(4)#8, (1)#10G, 1/2\" C" },
+    { "min": 7757, "max": 8864, "maxFLA": 32, "breaker": "40A", "wire": "#8 to #3", "awg": "(4)#8, (1)#10G, 1\" C" },
+    { "min": 8865, "max": 9972, "maxFLA": 36, "breaker": "45A", "wire": "#6 to #3", "awg": "(4)#6, (1)#10G, 1\" C" },
+    { "min": 9973, "max": 11080, "maxFLA": 40, "breaker": "50A", "wire": "#6 to #3", "awg": "(4)#6, (1)#10G, 1\" C" },
+    { "min": 11081, "max": 13296, "maxFLA": 48, "breaker": "60A", "wire": "#4 to #3", "awg": "(4)#4, (1)#10G, 1-1/4\" C" },
+    { "min": 13297, "max": 15512, "maxFLA": 56, "breaker": "70A", "wire": "#4 to #2", "awg": "(4)#4, (1)#8G, 1-1/4\" C" },
+    { "min": 15513, "max": 17728, "maxFLA": 64, "breaker": "80A", "wire": "#3 to #2/0", "awg": "(4)#4, (1)#8G, 1-1/4\" C" },
+    { "min": 17729, "max": 19944, "maxFLA": 72, "breaker": "90A", "wire": "#2 to #2/0", "awg": "(4)#2, (1)#8G, 1-1/4\" C" },
+    { "min": 19945, "max": 22160, "maxFLA": 80, "breaker": "100A", "wire": "#1 to #2/0", "awg": "(4)#2, (1)#8G, 1-1/4\" C" },
+    { "min": 22161, "max": 24376, "maxFLA": 88, "breaker": "110A", "wire": "#1 to #3/0", "awg": "(4)#2, (1)#6G, 1-1/4\" C" },
+    { "min": 24377, "max": 27700, "maxFLA": 100, "breaker": "125A", "wire": "#3 to #3/0", "awg": "(4)#1, (1)#6G, 1-1/2\" C" },
+    { "min": 27701, "max": 33240, "maxFLA": 120, "breaker": "150A", "wire": "#1 to #3/0", "awg": "(4)#1/0, (1)#6G, 1-1/2\" C" },
+    { "min": 33241, "max": 38780, "maxFLA": 140, "breaker": "175A", "wire": "#1 to 600KCMIL", "awg": "(4)#2/0, (1)#6G, 2\" C" },
+    { "min": 38781, "max": 44320, "maxFLA": 160, "breaker": "200A", "wire": "#1 to 600KCMIL", "awg": "(4)#3/0, (1)#6G, 2\" C" },
+    { "min": 44321, "max": 49860, "maxFLA": 180, "breaker": "225A", "wire": "#1 to 600KCMIL", "awg": "(4)#4/0, (1)#4G, 2\" C" },
+    { "min": 49861, "max": 55400, "maxFLA": 200, "breaker": "250A", "wire": "#1 to 600KCMIL", "awg": "(4)#250KCMIL, (1)#4G, 2-1/2\" C" },
+    { "min": 55401, "max": 66480, "maxFLA": 240, "breaker": "300A", "wire": "#1 to 600KCMIL", "awg": "(4)#300KCMIL, (1)#4G, 3\" C" },
+    { "min": 66481, "max": 77560, "maxFLA": 280, "breaker": "350A", "wire": "#1 to 600KCMIL", "awg": "(4)#350KCMIL, (1)#2G, 3\" C" },
+    { "min": 77561, "max": 88640, "maxFLA": 320, "breaker": "400A", "wire": "#1 to 600KCMIL", "awg": "(4)#400KCMIL, (1)#2G, 3-1/2\" C" },
+    { "min": 88641, "max": 99720, "maxFLA": 360, "breaker": "450A", "wire": "#1 to 600KCMIL", "awg": "(4)#500KCMIL, (1)#2G, 4\" C" },
+    { "min": 99721, "max": 110800, "maxFLA": 400, "breaker": "500A", "wire": "#1 to 600KCMIL", "awg": "(4)#600KCMIL, (1)#2G, 4\" C" },
+    { "min": 110801, "max": 132960, "maxFLA": 480, "breaker": "600A", "wire": "#1 to 750KCMIL", "awg": "(4)#750KCMIL, (1)#2G, 4-1/2\" C" },
+    { "min": 132961, "max": 155120, "maxFLA": 560, "breaker": "700A", "wire": "#1 to 1000KCMIL", "awg": "(4)#1000KCMIL, (1)#1G, 5\" C" },
+    { "min": 155121, "max": 177280, "maxFLA": 640, "breaker": "800A", "wire": "#1 to 1250KCMIL", "awg": "(4)#1250KCMIL, (1)#1G, 5-1/2\" C" },
+    { "min": 177281, "max": 221600, "maxFLA": 800, "breaker": "1000A", "wire": "#1 to 1500KCMIL", "awg": "(4)#1500KCMIL, (1)#1G, 6\" C" }
+  ]
+];
