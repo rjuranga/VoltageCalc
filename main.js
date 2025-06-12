@@ -9,6 +9,8 @@ function openCalc(evt, calcName) {
   evt.currentTarget.className += " active";
 }
 
+let ampsMultiplier = 1;
+
 document.addEventListener('DOMContentLoaded', () => {
   ['amps', 'va'].forEach(id => {
     document.getElementById(id).addEventListener('keydown', event => {
@@ -26,10 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-function calculateAmpsToVA() {
-  const current = parseFloat(document.getElementById('amps').value) || 0;
-  const voltage = document.getElementById('voltage1').value;
-  let vaTotal = 0, perPhase = 0;
+function setAmpsMultiplier(multiplier, btn) {
+  ampsMultiplier = multiplier;
+  document.querySelectorAll('.multiplier-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  calculateAmpsToVA();
+}
+
+function calculateAmpsToVA() {␊
+  const current = (parseFloat(document.getElementById('amps').value) || 0) * ampsMultiplier;
+  const voltage = document.getElementById('voltage1').value;␊
+  let vaTotal = 0, perPhase = 0;␊
 
   if (voltage === '277') {
     vaTotal = current * 277;
