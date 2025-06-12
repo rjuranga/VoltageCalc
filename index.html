@@ -43,6 +43,13 @@
                     <label for="amps">Current (Amps):</label>
                     <input type="number" id="amps" step="0.01" required>
 
+                    <div class="multiplier-container">
+                        <span>Multiplier:</span>
+                        <button type="button" class="multiplier-btn" onclick="setAmpsMultiplier(0.8, this)">80%</button>
+                        <button type="button" class="multiplier-btn active" onclick="setAmpsMultiplier(1, this)">100%</button>
+                        <button type="button" class="multiplier-btn" onclick="setAmpsMultiplier(1.25, this)">125%</button>
+                    </div>
+
                     <label for="voltage1">System Voltage:</label>
                     <select id="voltage1">
                         <option value="277">277V Single-Phase</option>
