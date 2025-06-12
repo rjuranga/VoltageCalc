@@ -54,3 +54,16 @@ button:hover {
   border: 1px solid #ccc;
   border-top: none;
 }
+
+.multiplier-container {
+  margin: 10px 0;
+}
+
+.multiplier-btn {
+  width: auto;
+  margin-right: 5px;
+}
+
+.multiplier-btn.active {
+  background-color: #007BFF;
+}
