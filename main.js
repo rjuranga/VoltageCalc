@@ -9,6 +9,8 @@ function openCalc(evt, calcName) {
   evt.currentTarget.className += " active";
 }
 
+let currentMultiplier = 1;
+
 document.addEventListener('DOMContentLoaded', () => {
   ['amps', 'va'].forEach(id => {
     document.getElementById(id).addEventListener('keydown', event => {
@@ -23,6 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById(id).addEventListener('change', () => {
       id === 'voltage1' ? calculateAmpsToVA() : calculateVAToAmps();
     });
+  });
+
+  document.querySelectorAll('.va-multiplier input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => toggleVAMultiplier(cb));
+  });
+
+  document.getElementById('va').addEventListener('input', () => {
+    const input = document.getElementById('va');
+    if (currentMultiplier !== 1) {
+      input.dataset.baseVa = parseFloat(input.value) / currentMultiplier || 0;
+    } else {
+      input.dataset.baseVa = input.value;
+    }
   });
 });
 
@@ -89,4 +104,29 @@ function copyAWG() {
   navigator.clipboard.writeText(awgConfig).catch(err => {
     console.error('Failed to copy: ', err);
   });
+}
+
+function toggleVAMultiplier(checkbox) {
+  const vaInput = document.getElementById('va');
+
+  if (checkbox.checked) {
+    document.querySelectorAll('.va-multiplier input[type="checkbox"]').forEach(cb => {
+      if (cb !== checkbox) cb.checked = false;
+    });
+
+    if (!vaInput.dataset.baseVa) {
+      vaInput.dataset.baseVa = vaInput.value || 0;
+    }
+
+    const base = parseFloat(vaInput.dataset.baseVa) || 0;
+    currentMultiplier = parseFloat(checkbox.value);
+    vaInput.value = (base * currentMultiplier).toFixed(2);
+  } else {
+    const base = parseFloat(vaInput.dataset.baseVa || vaInput.value) || 0;
+    vaInput.value = base;
+    currentMultiplier = 1;
+    delete vaInput.dataset.baseVa;
+  }
+
+  calculateVAToAmps();
 }
