@@ -23,6 +23,11 @@
                 <form id="va-to-amps-form" onsubmit="return false;">
                     <label for="va">Volt-Amperes (VA):</label>
                     <input type="number" id="va" step="0.01" required>
+                    <div class="va-multiplier">
+                        <label><input type="checkbox" id="va-125" value="1.25"> 125%</label>
+                        <label><input type="checkbox" id="va-175" value="1.75"> 175%</label>
+                        <label><input type="checkbox" id="va-250" value="2.5"> 250%</label>
+                    </div>
 
                     <label for="voltage2">System Voltage:</label>
                     <select id="voltage2">

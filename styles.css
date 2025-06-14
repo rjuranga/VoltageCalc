@@ -18,6 +18,15 @@ input, select, button {
   width: 100%;
   padding: 5px;
 }
+
+.va-multiplier input[type="checkbox"] {
+  width: auto;
+  display: inline-block;
+  margin-right: 10px;
+}
+.va-multiplier label {
+  margin-right: 10px;
+}
 button {
   background-color: #4CAF50;
   color: white;
